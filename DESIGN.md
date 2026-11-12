@@ -1,5 +1,52 @@
 # DESIGN.md — UI/UX Design Documentation
 
+## Recovery journey redesign (2026-11-13)
+
+This section supersedes the older SmartRouteRecoveryScreen description below.
+The page is divided into **Current plan** and **Backup plans**. The current section
+shows its immediate transport, provider, departure/arrival times, a visible compact
+map, remaining connections and booking action. The separate backup section holds
+expandable alternatives and comparisons. Expanding a backup does not change the
+current plan; confirming a feasible alternative promotes it to the current section.
+
+The recovery page uses the selected vertical timeline design: shared upcoming
+stops lead into a detailed recommended branch and connected backup branches.
+Visited stops and completed legs are removed from this active view. Backups expand
+on selection; the recommended route includes connection times, provider details,
+arrival, cost, and the orange confirmation action. Roboto and responsive wrapping
+keep the image's layout readable on phones and with enlarged text.
+
+Reference-informed polish keeps this topology intact: inset route summaries
+separate arrival and fare, connection blocks label departure/arrival explicitly,
+and transfer strips show actual scheduled wait, minimum transfer, and spare time.
+Backups show arrival and fare differences against the original route. The demo
+adds a small determinate progress indicator; selecting a backup again collapses it.
+Navy/white playback buttons and navy text on the orange booking button improve
+contrast. The established palette is reused throughout.
+
+Visual references: [Pinterest itinerary stepper](https://in.pinterest.com/pin/25966135347788601/)
+and [Daily UI 79 itinerary](https://dribbble.com/shots/5639768-Daily-Ui-79-Itinerary).
+
+The map is visible in the current-plan section and expands through the labeled
+top-right **Map** button or **Expand map** action. Tracking updates the preview
+and full map while the sheet is open. Scenario
+controls remain in their own bottom sheet.
+The recovery header uses a shorter title. Roboto is bundled in four weights,
+with its license, to keep the intended typography consistent on every device.
+
+Recovery opens in GPS mode, with explicit permission/loading/error states. The
+supporting map never shows a device marker before receiving a location fix.
+A light vertical journey tree is the primary view: shared upcoming travel,
+then recommended, backup, and reserve branches. Missed connections move into
+collapsed history. Status labels accompany blue/orange/muted colors.
+
+The map uses OpenStreetMap tiles with visible attribution. The corridor line is
+illustrative, not turn-by-turn navigation. Demo playback is separately labeled,
+with an accelerated clock, moving marker, pause, delay, scenarios, and reset.
+GPS estimates are not fabricated. Route confirmation is an explicit mock booking.
+Use SafeArea, wrapping controls, at least 48 logical pixel targets, and constrained
+content on wide screens. Tracking movement conveys position rather than decoration.
+
 ## A. Design Philosophy
 
 **Application Design Concept:**
