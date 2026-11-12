@@ -1,5 +1,36 @@
 # PROJECTFLOW.md — Complete Application Workflow
 
+## Updated recovery workflow (2026-11-13)
+
+This replaces the older recovery scenario/dashboard workflow below.
+
+1. Open Recovery. GPS mode requests foreground location permission and shows
+   device position when available. Permission failures leave an actionable state.
+2. Follow the Home → A (Jaipur) → B (Ajmer) → Jodhpur journey tree. A map supplies
+   geographic context; the corridor and schedules are hardcoded demonstration data.
+   Current plan shows transport, departure/arrival times, a map preview, and
+   remaining connections. Backup plans is a separate section; expanding one keeps
+   the current plan intact until confirmation. A labeled top-right Map button opens
+   the full map, GPS accuracy and manual arrival control. Visited stops and completed
+   legs disappear from the active timeline.
+   Backup summaries compare arrival and fare with the original route; tap a
+   backup again to collapse it. Expanded transfers show actual wait and spare
+   time after the minimum interchange requirement.
+3. GPS mode checks checkpoint proximity using repeated accurate readings, or the
+   traveler explicitly confirms arrival. Outside the demo corridor, show schedule
+   previews rather than inventing a real arrival estimate.
+4. For video recording, select demo playback. Play/pause advances a simulated
+   journey clock and position; add delay or select a scenario to show recovery.
+   Playback advances automatically by 15 simulated minutes per second after Play.
+   “Scenarios” opens the
+   demo bottom sheet; paused delay changes update the journey immediately.
+5. At A, allow 30 minutes for transfer; at B, allow 25 minutes. Missed branches
+   leave the active tree. The next feasible route becomes recommended and later
+   routes remain backups. If none remain, confirmation is unavailable.
+6. Review and confirm a replacement to create an in-memory simulated voucher.
+   Recommendation alone never issues a booking. GPS and playback stop when the
+   screen is disposed or the app is backgrounded; resume tracking explicitly.
+
 ## A. Application Overview
 
 **AeroNova AI — Virtual Travel Agent** is a Flutter-based mobile application that functions as an autonomous travel command center. The app provides:

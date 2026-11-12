@@ -5,13 +5,30 @@ All notable changes to this project will be documented here.
 ## [Unreleased]
 
 ### Added
-- 
+- GPS-default recovery journey with a supporting map and branching route tree.
+- Explicit demo playback, journey clock, delay scenarios, and manual arrival.
+- Foreground location permissions, checkpoint detection, and tracking error states.
+- Recovery schedule, arrival detection, and responsive screen tests.
 
 ### Changed
-- 
+- Split recovery into Current plan and Backup plans, with an always-visible map preview and labeled Map control.
+- Confirmed backups become current and drive the demo's subsequent connection schedule.
+- Polished vertical recovery branches with clearer time blocks, arrival/fare comparisons, and transfer margins.
+- Added demo progress feedback, backup collapse, and higher-contrast action colors.
+- Restored the detailed vertical recovery timeline selected from the reference image.
+- Moved the live map to a top-right control and increased demo speed to 15 minutes per tick.
+- Recovery now centers a fork-and-merge route tree with selectable parallel branches.
+- Moved map and demo scenarios into progressive disclosure; simplified route details.
+- Bundled Roboto font weights and shortened the recovery header.
+- Recovery recommendations use coherent hardcoded schedules and transfer buffers.
+- Confirmed mock recovery vouchers reflect the replacement transport mode.
 
 ### Fixed
-- 
+- Visited checkpoints and completed legs now disappear from the active recovery timeline.
+- Adding a delay to a paused demo now updates position and checkpoint state immediately.
+- Recovery no longer recommends departed origin routes after reaching a checkpoint.
+- No feasible route is returned when all replacement connections have been missed.
+- Disabled Kotlin incremental caching to avoid Windows plugin build-cache failures.
 
 ### Removed
 - 

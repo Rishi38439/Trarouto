@@ -1,5 +1,38 @@
 # ARCHITECTURE.md — Technical Architecture
 
+## Recovery tracking update (2026-11-13)
+
+This section supersedes older statements that the entire app has no network
+dependencies or that recovery uses the original simulator dashboard.
+
+- `SmartRouteRecoveryScreen` owns foreground tracking, demo playback, selection,
+  and confirmation state. GPS is the default; demo playback is explicitly selected.
+- `RecoveryRouteTree` renders a vertical active timeline and connected recovery
+  branches, filtering visited stops and completed legs from the visible route.
+  Selection expands a backup without changing engine recommendations.
+- `RecoveryRouteSection` separates current and backup rendering. The screen keeps
+  a confirmed feasible plan current, otherwise uses the engine recommendation.
+  The confirmed demo route also determines subsequent simulated transit times.
+  Separate keyed preview and modal maps share the same position state.
+- The top-right map control opens a modal map. A screen-owned ValueNotifier
+  refreshes the overlay on GPS fixes and simulated position updates; it is disposed
+  with the screen. Demo playback advances 15 simulated minutes each second.
+- `JourneyLocationService` uses `geolocator` for permission checks and foreground
+  position updates. `CheckpointArrivalDetector` requires repeated fresh, accurate
+  readings near a checkpoint. Manual arrival confirmation is also available.
+- `RecoveryJourneyMap` uses `flutter_map` and `latlong2` with OpenStreetMap tiles,
+  an illustrative corridor, checkpoint markers, and a real or simulated position.
+  Tile loading needs internet; no road routing or traffic service is integrated.
+- `RouteRecoveryEngine` retains its public recalculation contract. It compares
+  arrival plus minimum transfer time with hardcoded departures, promotes the first
+  feasible branch, and returns a null active route if every connection is missed.
+  Recovery at B preserves completed travel and replaces only the future leg.
+- Confirmation still calls the shell's `onRebooked` callback and creates only an
+  in-memory mock voucher. There is no backend, transport availability feed, or
+  persistent location history. Background tracking is not configured.
+
+Android declares INTERNET, ACCESS_COARSE_LOCATION, and ACCESS_FINE_LOCATION.
+
 ## A. Technology Stack
 
 | Layer | Technology |

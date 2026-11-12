@@ -85,7 +85,7 @@ class _MainAppShellState extends State<MainAppShell> {
         0,
         BookingItem(
           id: 'bk-rec-${DateTime.now().millisecondsSinceEpoch}',
-          type: 'train',
+          type: route.legs.last.mode == 'train' ? 'train' : 'bus',
           title: 'Route Recovery: ${route.name}',
           provider: 'AeroNova Recovery Dispatch',
           referenceNumber: 'REC-${DateTime.now().millisecondsSinceEpoch % 100000}',
@@ -93,7 +93,7 @@ class _MainAppShellState extends State<MainAppShell> {
           price: route.totalCost,
           currency: '₹',
           status: 'confirmed',
-          voucherNumber: 'VOUCHER-REC-9912',
+          voucherNumber: 'VOUCHER-REC-${DateTime.now().millisecondsSinceEpoch}',
           details: {'New ETA': route.estimatedArrivalTime, 'Route': route.pathDescription},
         ),
       );
@@ -149,7 +149,7 @@ class _MainAppShellState extends State<MainAppShell> {
   String _getTitle(int index) {
     switch (index) {
       case 0: return 'AeroNova Command Center';
-      case 1: return 'Smart Route Recovery (Signature)';
+      case 1: return 'Journey recovery';
       case 2: return 'Conversational AI Planner';
       case 3: return 'Explore Destinations';
       case 4: return 'Offline Travel Kit';
@@ -184,7 +184,7 @@ class _MainAppShellState extends State<MainAppShell> {
                 children: [
                   Text(_getTitle(_currentTabIndex),
                       style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
-                  const Text('AI Virtual Travel Concierge', style: TextStyle(fontSize: 10, color: Color(0xFF64748B))),
+                  Text(_currentTabIndex == 1 ? 'Delhi to Jodhpur' : 'AI Virtual Travel Concierge', style: TextStyle(fontSize: 10, color: Color(0xFF64748B))),
                 ],
               ),
             ),
