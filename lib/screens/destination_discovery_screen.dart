@@ -109,7 +109,7 @@ class _DestinationDiscoveryScreenState extends State<DestinationDiscoveryScreen>
                                       color: Colors.white,
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
-                                      shadows: [Shadow(color: Colors.black50, blurRadius: 4)])),
+                                      shadows: [Shadow(color: Colors.black54, blurRadius: 4)])),
                             ),
                           ],
                         ),

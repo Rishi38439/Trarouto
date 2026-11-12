@@ -18,7 +18,6 @@ class OfflineKitScreen extends StatefulWidget {
 }
 
 class _OfflineKitScreenState extends State<OfflineKitScreen> {
-  bool _isOfflineMode = true;
   bool _isDownloading = false;
 
   void _downloadTrip() async {

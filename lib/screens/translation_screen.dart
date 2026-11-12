@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../models/travel_models.dart';
 import '../services/mock_data_service.dart';
 
 class TranslationScreen extends StatefulWidget {

@@ -14,7 +14,6 @@ class SmartRouteRecoveryScreen extends StatefulWidget {
 class _SmartRouteRecoveryScreenState extends State<SmartRouteRecoveryScreen> {
   String _selectedCheckpointId = 'cp-a';
   int _delayMinutes = 45; // Default to showcase Scenario 2!
-  RoutePossibility? _rebookingTarget;
 
   @override
   Widget build(BuildContext context) {
@@ -644,6 +643,6 @@ class _SmartRouteRecoveryScreenState extends State<SmartRouteRecoveryScreen> {
 }
 
 // Helper RoundedRectangleApp fallback for shape
-ShapeBorder RoundedRectangleApp({required BorderRadius borderRadius}) {
+OutlinedBorder RoundedRectangleApp({required BorderRadius borderRadius}) {
   return RoundedRectangleBorder(borderRadius: borderRadius);
 }
